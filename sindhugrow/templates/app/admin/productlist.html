@@ -1,0 +1,58 @@
+{% extends 'app/admin/base1.html' %}
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary" style="font-weight: 30px;">Product History</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quality</th>
+                            <th>Freshness</th>
+                            <th>Date</th>
+                            <th>Photo</th>
+                        </tr>
+                    </thead>
+                    <!-- <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Salary</th>
+                        </tr>
+                    </tfoot> -->
+                    <tbody>
+                    {% for user in user_list %}
+                        <tr>
+                            <th>{{ user.id }}</th>
+                            <th>{{ user.firstname }}</th>
+                            <th>{{ user.lastname }}</th>
+                            <th>{{ user.productname }}</th>
+                            <th>{{ user.productprice }}</th>
+                            <th>{{ user.quality }}</th>
+                            <th>{{ user.freshness }}</th>
+                            <th>{{ user.date }}</th>
+                            <th>{% if user.photo %}<img src="{{MEDIA_URL}}{{user.photo.url}}" alt="profile is not  available" height="60px" width="60px">{% endif %}</th>
+                            <td><form action="{% url 'delete_product' pk=user.id %}" method="POST" >{% csrf_token %}<input type="submit" value="Delete" style="background-color: red;color: white;"></form></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> 
+</center>
+{% endblock %}

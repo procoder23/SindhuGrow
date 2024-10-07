@@ -1,0 +1,180 @@
+{% extends 'app/base_profile.html' %}
+{% block content %}
+{% if request.session.role == 2%}
+<section class="vh-100 bg-image"
+  style="background-color: greenyellow;">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Add Product Details</h2>
+              <form method="POST" action="{% url 'requestproduct' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="firstname" value="{{ request.session.firstname }}" readonly/>
+                  <label class="form-label" for="form3Example1cg">First Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example3cg" class="form-control form-control-lg" name="lastname" value="{{ request.session.lastname }}" readonly/>
+                  <label class="form-label" for="form3Example3cg">Last Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example4cg" class="form-control form-control-lg" name="productname" required/>
+                  <label class="form-label" for="form3Example4cg">Product Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="number" id="form3Example4cdg" class="form-control form-control-lg" name="productprice" required/>
+                  <label class="form-label" for="form3Example4cdg">Product Price</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example4cdg" class="form-control form-control-lg" name="quality" required/>
+                  <label class="form-label" for="form3Example4cdg">Quality</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="number" id="form3Example4cdg" class="form-control form-control-lg" name="freshness" required/>
+                  <label class="form-label" for="form3Example4cdg">Freshness</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="date" id="form3Example4cdg" class="form-control form-control-lg" name="date" required/>
+                  <label class="form-label" for="form3Example4cdg">Date</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="file" class="form-control form-control-lg" name="photu" required/>
+                  <label class="form-label" for="form3Example4cdg">Photo</label>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <input type="submit" value="Add" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" >
+                  <!-- <button type="button"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Add</button> -->
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% if request.session.role == 3%}
+<section class="vh-100 bg-image"
+  style="background-color: greenyellow;">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Add Service Details</h2>
+              <form method="POST" action="{% url 'requestservice' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="firstname" value="{{ request.session.firstname }}" readonly/>
+                  <label class="form-label" for="form3Example1cg">First Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example3cg" class="form-control form-control-lg" name="lastname" value="{{ request.session.lastname }}" readonly/>
+                  <label class="form-label" for="form3Example3cg">Last Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example4cg" class="form-control form-control-lg" name="equipment" value="{{ request.session.equipment }}" readonly/>
+                  <label class="form-label" for="form3Example4cg">Equipment</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="number" id="form3Example4cdg" class="form-control form-control-lg" name="rentprice" required/>
+                  <label class="form-label" for="form3Example4cdg">Rent Price</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example4cdg" class="form-control form-control-lg" name="years" required/>
+                  <label class="form-label" for="form3Example4cdg">Years Used</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="date" id="form3Example4cdg" class="form-control form-control-lg" name="date" required/>
+                  <label class="form-label" for="form3Example4cdg">Date</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="file" class="form-control form-control-lg" name="photu" required/>
+                  <label class="form-label" for="form3Example4cdg">Photo</label>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <input type="submit" value="Add" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" >
+                  <!-- <button type="button"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Add</button> -->
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% if request.session.role == 4%}
+<section class="vh-100 bg-image"
+  style="background-color: greenyellow;">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Add Hotel Details</h2>
+              <form method="POST" action="{% url 'requesthotel' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="firstname" value="{{ request.session.firstname }}"/>
+                  <label class="form-label" for="form3Example1cg">First Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example3cg" class="form-control form-control-lg" name="lastname" value="{{ request.session.lastname }}"/>
+                  <label class="form-label" for="form3Example3cg">Last Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example4cg" class="form-control form-control-lg" name="hotelname" value="{{ request.session.hotelname }}" />
+                  <label class="form-label" for="form3Example4cg">Hotel Name</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example4cdg" class="form-control form-control-lg" name="contact" value="{{ request.session.contact }}" />
+                  <label class="form-label" for="form3Example4cdg">Contact</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example4cdg" class="form-control form-control-lg" name="requirement" />
+                  <label class="form-label" for="form3Example4cdg">Requirement</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="date" id="form3Example4cdg" class="form-control form-control-lg" name="date" />
+                  <label class="form-label" for="form3Example4cdg">Date</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="file" class="form-control form-control-lg" name="picture" />
+                  <label class="form-label" for="form3Example4cdg">Photo</label>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <input type="submit" value="Add" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" >
+                  <!-- <button type="button"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Add</button> -->
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

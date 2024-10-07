@@ -1,0 +1,34 @@
+{% extends 'app/base1.html' %}
+{% load static %}
+{% block content %}
+{% for products in productlist %}
+    <div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-10" style="margin-top:-30px">
+            <div class="row p-2 bg-white border rounded">
+                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{MEDIA_URL}}{{products.photo.url}}"></div>
+                <div class="col-md-6 mt-1">
+                    <h5>{{ products.productname }}</h5><hr>
+                    <p style="font-size: 15px;color: orangered;">Farmer Name : {{ products.firstname }} {{ products.lastname }}</p>
+                    <p style="font-size: 15px;color: rgb(25, 0, 255);">Freshness : {{ products.freshness }}%</p>
+                    <p style="font-size: 15px;color: rgb(30, 136, 65);">Quality : {{ products.quality }}</p>
+                    <p style="font-size: 15px;color: orangered;">Date : {{ products.date }}</p>
+                </div>
+                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                    <div class="d-flex flex-row align-items-center">
+                        <h4 class="mr-1">Rs.{{ products.productprice }}</h4><span class="strike-text">Rs.25</span>
+                    </div>
+                    <h6 class="text-success">Free shipping</h6>
+                    {% if request.session.id is none %}
+                        <h5 style="color: red;">Please register...<a href="{% url 'index' %}">Click here</a></h5>
+                        <p style="color: blue;">NOTE : <p style="color:green">If you are not approved wait for minutes...</p></p>
+                    {% endif %}
+                    {% if request.session.id %}
+                        <button class="btn btn-outline-primary btn-sm mt-2" type="button">Request to Buy</button></div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

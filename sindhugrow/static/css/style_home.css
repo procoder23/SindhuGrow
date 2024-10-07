@@ -1,0 +1,17 @@
+.main-box {
+    background-color: rgb(74, 177, 74);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+.box {
+    background-color: azure;
+    border: 2px solid;
+    box-shadow: 5px 10px rgb(33, 128, 33);
+}
+.main-box div {
+    width: 300px;
+    margin: 15px;
+    text-align: center;
+    padding: 15px;
+}

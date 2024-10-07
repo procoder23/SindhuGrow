@@ -1,0 +1,78 @@
+{% extends 'app/base1.html' %}
+{% load static %}
+{% block content %}
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static '/images/farmer.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static '/images/maize.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static '/images/wheat.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+    <br>
+    <div>
+      <h2 style="text-align: center;font-weight: 200;">Services</h2>
+    </div>
+    <div>
+      <center><h4>Registration to Agricultural Production Selling or Buying</h4></center>
+      <div class="main-box">
+        <div class="box">
+          <h5 style="color:orange">Farmer Registration</h5>
+          <p>Farmer can sell product after registration</p>
+           {% if request.session.id is none %}
+            <form method="POST" action="{% url 'fregister' %}">
+              {% csrf_token %}
+              <button type="submit" style="background-color: green;">Register</button>
+            </form>
+           {% endif %}
+        </div>
+        <div class="box">
+          <h5 style="color:orange">Service Provider Registration</h5>
+          <p>Service Provider can help to farmers after registration by selling their service</p>
+           {% if request.session.id is none %}
+            <form method="POST" action="{% url 'register_sp' %}">
+              {% csrf_token %}
+              <button type="submit" style="background-color: green;">Register</button>
+            </form>
+            {% endif %}
+        </div>
+        <div class="box">
+          <h5 style="color:orange">Hotel Manager Registration</h5>
+          <p>Hotel Manager can help farmers by taking  direct product from farmers after registration</p>
+          {% if request.session.id is none %}
+            <form method="POST" action="{% url 'register_hm' %}">
+            {% csrf_token %}
+              <button type="submit" style="background-color: green;">Register</button>
+            </form>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <hr style="font-weight: 100;">
+      <div class="news">
+        <center>
+        <div class="holder">
+          <h2 style="text-align: center;">News</h2>
+          <ul id="ticker01">
+            {% for user in news_list %}
+              <li><span>{{user.is_created}}</span><a href="#">{{user.news}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </center>
+      </div>
+    <script></script>
+{% endblock %}

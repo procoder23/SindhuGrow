@@ -1,0 +1,487 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    
+</head>
+<body style="background-color:greenyellow;">
+    <section >
+        <div class="container py-5">
+          <div class="row">
+            <div class="col">
+              <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                <ol class="breadcrumb mb-0">
+                  <li class="breadcrumb-item"><a href="{% url 'index' %}" style="text-decoration: none;">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card mb-4">
+                <div class="card-body text-center">
+                  {% if request.session.role == 2 %}
+                  <img src="{% static '/images/f.jpg' %}" alt="profile is not  available"
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                  {% endif %}
+                  {% if request.session.role == 3 %}
+                  <img src="{% static '/images/sp.png' %}" alt="profile is not  available"
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                  {% endif %}
+                  {% if request.session.role == 4 %}
+                  <img src="{% static '/images/hm.jpg' %}" alt="profile is not  available"
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                  {% endif %}
+                  <h5 class="my-3" style="color: blue">{{ request.session.firstname }} {{request.session.lastname}}</h5>
+                  {% if request.session.role == 2 %}
+                  <p class="text-muted mb-1" style="color: blue;">{{ request.session.crop }}</p>
+                  {% endif %}
+                  {% if request.session.role == 3 %}
+                  <p class="text-muted mb-1" style="color: blue;">{{ request.session.equipment }}</p>
+                  {% endif %}
+                  {% if request.session.role == 4 %}
+                  <p class="text-muted mb-1" style="color: blue;">{{ request.session.hotelname }}</p>
+                  {% endif %}
+                  <!-- <p class="text-muted mb-4">Bay Area, San Francisco, CA</p> -->
+                  <br>
+                  <div class="d-flex justify-content-center mb-2">
+                    <!-- <button type="button" class="btn btn-primary">Update</button> -->
+                    <!-- <button type="button" class="btn btn-outline-primary ms-1"></button> -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0" style="color: orange;">Full Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ request.session.firstname }} {{request.session.lastname}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0" style="color: orange;">Email</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ request.session.email }}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  {% if request.session.role != 4 %}
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0" style="color: orange;">Mob No</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ request.session.contact }}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  {% endif %}
+
+                  {% if request.session.role == 4 %}
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0" style="color: orange;">Owner Phone</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ request.session.contact }}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  {% endif %}
+      
+                  {% if request.session.role == 4 %}
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0" style="color: orange;">Hotel Contact</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ request.session.hotelcontact }}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  {% endif %}
+                  
+                  {% if request.session.role == 4 %}
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0" style="color: orange;">Hotel Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ request.session.hotelname }}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  {% endif %}
+              
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0" style="color: orange;">Taluka</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ request.session.taluka }}</p>
+                    </div>
+                  </div> 
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0" style="color: orange;">Area</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ request.session.area }}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  {% if request.session.role == 4 %}
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0" style="color: orange;">Address</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ request.session.address }}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  {% endif %}
+                  
+                  {% if request.session.role != 4 %}
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0" style="color: orange;">Village</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ request.session.village }}</p>
+                    </div>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="row">
+                <div class="card mb-4 mb-lg-0" style="background-color: green;color: white;">
+                  <div class="card-body p-0">
+                    <a href="{% url 'prodrequestpage' %}"><center><button type="button" class="btn btn-primary-warning" style="color: white;">Add Product</button></center></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% if request.session.role == 2 %}
+    <hr>
+      <!-- Here modal code starts for farmer -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+          
+            <div class="modal-body">
+              <form method="POST" action="{% url 'updateprofile' pk=request.session.id %}" enctype="multipart/form-data">
+                {% csrf_token %} 
+                <div class="mb-3">
+                  <label for="fname" class="col-form-label">First Name</label>
+                  <input type="text" class="form-control" id="recipient-name" name="firstname" value="{{ request.session.firstname }}">
+                </div>
+                <div class="mb-3">
+                  <label for="lname" class="col-form-label">Last Name</label>
+                  <input type="text" class="form-control" id="recipient-name" name="lastname" value="{{ request.session.lastname }}">
+                </div>
+                <div class="mb-3">
+                  <label for="village" class="col-form-label">Village</label>
+                  <input type="text" class="form-control" id="recipient-name" name="village" value="{{ request.session.village }}">
+                </div>
+                <div class="mb-3">
+                  <label for="area" class="col-form-label">Area</label>
+                  <input type="text" class="form-control" id="recipient-name" name="area" value="{{ request.session.area }}">
+                </div>
+                <div class="mb-3">
+                  <label for="contact" class="col-form-label">Mobile No</label>
+                  <input type="text" class="form-control" id="recipient-name" name="contact" value="{{ request.session.contact }}">
+                </div>
+                <input type="submit" value="Update" style="background-color: chocolate;">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Update</button> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <!-- Here modal code ends for farmer-->
+    {% endif %}
+
+    {% if request.session.role == 3 %}
+      <!-- Here modal code starts for sp -->
+      <hr>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+          
+            <div class="modal-body">
+              <form method="POST" action="{% url 'updatesp' pk=request.session.id %}" enctype="multipart/form-data">
+                {% csrf_token %} 
+                <div class="mb-3">
+                  <label for="fname" class="col-form-label">First Name</label>
+                  <input type="text" class="form-control" id="recipient-name" name="firstname" value="{{ request.session.firstname }}">
+                </div>
+                <div class="mb-3">
+                  <label for="lname" class="col-form-label">Last Name</label>
+                  <input type="text" class="form-control" id="recipient-name" name="lastname" value="{{ request.session.lastname }}">
+                </div>
+                <div class="mb-3">
+                  <label for="village" class="col-form-label">Village</label>
+                  <input type="text" class="form-control" id="recipient-name" name="village" value="{{ request.session.village }}">
+                </div>
+                <div class="mb-3">
+                  <label for="area" class="col-form-label">Area</label>
+                  <input type="text" class="form-control" id="recipient-name" name="area" value="{{ request.session.area }}">
+                </div>
+                <div class="mb-3">
+                  <label for="contact" class="col-form-label">Mobile No</label>
+                  <input type="text" class="form-control" id="recipient-name" name="contact" value="{{ request.session.contact }}">
+                </div>
+                <input type="submit" value="Update" style="background-color: chocolate;">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Update</button> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <!-- Here modal code ends for sp  -->
+    {% endif %}
+
+    {% if request.session.role == 4 %}
+      <!-- Here modal code  start for hm -->
+      <hr>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+          
+            <div class="modal-body">
+              <form method="POST" action="{% url 'updatehm' pk=request.session.id %}" enctype="multipart/form-data">
+                {% csrf_token %} 
+                <div class="mb-3">
+                  <label for="fname" class="col-form-label">First Name</label>
+                  <input type="text" class="form-control" id="recipient-name" name="firstname" value="{{ request.session.firstname }}">
+                </div>
+                <div class="mb-3">
+                  <label for="lname" class="col-form-label">Last Name</label>
+                  <input type="text" class="form-control" id="recipient-name" name="lastname" value="{{ request.session.lastname }}">
+                </div>
+                <div class="mb-3">
+                  <label for="area" class="col-form-label">Area</label>
+                  <input type="text" class="form-control" id="recipient-name" name="area" value="{{ request.session.area }}">
+                </div>
+                <div class="mb-3">
+                  <label for="contact" class="col-form-label">Owner Phone</label>
+                  <input type="text" class="form-control" id="recipient-name" name="contact" value="{{ request.session.contact }}">
+                </div>
+                <div class="mb-3">
+                  <label for="contact" class="col-form-label">Hotel Contact</label>
+                  <input type="text" class="form-control" id="recipient-name" name="hotelcontact" value="{{ request.session.hotelcontact }}">
+                </div>
+                <div class="mb-3">
+                  <label for="contact" class="col-form-label">Hotel Address</label>
+                  <input type="text" class="form-control" id="recipient-name" name="address" value="{{ request.session.address }}">
+                </div>
+                <div class="mb-3">
+                  <label for="contact" class="col-form-label">Hotel Name</label>
+                  <input type="text" class="form-control" id="recipient-name" name="hotelname" value="{{ request.session.hotelname }}">
+                </div>
+                <input type="submit" value="Update" style="background-color: chocolate;">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Update</button> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Here modal code ends for hm -->
+    {% endif %}
+    {% if request.session.role == 2 %}
+    <center>
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h4 class="m-0 font-weight-bold text-primary" style="font-weight: 30px;">Product History</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Quality</th>
+                                <th>Freshness</th>
+                                <th>Date</th>
+                                <th>Photo</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <!-- <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Office</th>
+                                <th>Age</th>
+                                <th>Start date</th>
+                                <th>Salary</th>
+                            </tr>
+                        </tfoot> -->
+                        <tbody>
+                        {% for user in ulist %}
+                            <tr>
+                                <th>{{ user.id }}</th>
+                                <th>{{ user.firstname }}</th>
+                                <th>{{ user.lastname }}</th>
+                                <th>{{ user.productname }}</th>
+                                <th>{{ user.productprice }}</th>
+                                <th>{{ user.quality }}</th>
+                                <th>{{ user.freshness }}</th>
+                                <th>{{ user.date }}</th>
+                                <th>{% if user.photo %}<img src="{{MEDIA_URL}}{{user.photo.url}}" alt="profile is not  available" height="60px" width="60px">{% endif %}</th>
+                                <th>{{ user.status }}</th>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> 
+    </center>
+    <hr>
+    {% endif %}
+    {% if request.session.role == 4 %}
+    <center>
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h4 class="m-0 font-weight-bold text-primary" style="font-weight: 30px;">Hotel History</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Hotel Name</th>
+                                <th>Contact</th>
+                                <th>Requirement</th>
+                                <th>Date</th>
+                                <th>Photo</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in ulist %}
+                            <tr>
+                                <th>{{ user.id }}</th>
+                                <th>{{ user.firstname }}</th>
+                                <th>{{ user.lastname }}</th>
+                                <th>{{ user.hotelname }}</th>
+                                <th>{{ user.contact }}</th>
+                                <th>{{ user.requirement }}</th>
+                                <th>{{ user.date }}</th>
+                                <th>{% if user.photo %}<img src="{{MEDIA_URL}}{{user.image.url}}" alt="profile is not  available" height="60px" width="60px">{% endif %}</th>
+                                <th>{{ user.status }}</th>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> 
+    </center>
+    {% endif %}
+
+    {% if request.session.role == 3 %}
+    <center>
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h4 class="m-0 font-weight-bold text-primary" >Service History</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Equipment</th>
+                                <th>Rent Price</th>
+                                <th>Years Used</th>
+                                <th>Date</th>
+                                <th>Photo</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in ulist %}
+                            <tr>
+                                <th>{{ user.id }}</th>
+                                <th>{{ user.firstname }}</th>
+                                <th>{{ user.lastname }}</th>
+                                <th>{{ user.service }}</th>
+                                <th>{{ user.rent }}</th>
+                                <th>{{ user.years }}</th>
+                                <th>{{ user.date }}</th>
+                                <th>{% if user.photo %}<img src="{{MEDIA_URL}}{{user.photo.url}}" alt="profile is not  available" height="70px" width="100px">{% endif %}</th>
+                                <th>{{ user.status }}</th>
+                                <td><form action="" method="POST" >{% csrf_token %}<input type="submit" value="Approve" style="background-color: orange;color: green;"></form></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> 
+    </center>
+    {% endif %}
+ <!-- </form>-->
+</body>
+</html>

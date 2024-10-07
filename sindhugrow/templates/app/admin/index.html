@@ -1,0 +1,194 @@
+{% extends 'app/admin/base1.html' %}
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    </div>
+<!-- Content Row -->
+<div class="row">
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 15px;">
+                           <a href="{% url 'tfr' %}" style="color: orangered;font-size: 15px;font-weight: 700;text-decoration: none;">Farmers Requests</a> 
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style="font-size: 15px;">
+                            <a href="{% url 'tsr' %}" style="color: blue;font-size: 15px;font-weight: 700;text-decoration: none;">Service Provider Requests</a></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" style="font-size: 15px;">
+                            <a href="{% url 'request_product' %}" style="color: green;font-size: 15px;font-weight: 700;text-decoration: none;">Request Product</a></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1" style="font-size: 15px;"><a href="{% url 'thr' %}" style="color: orangered;font-size: 15px;font-weight: 700;text-decoration: none;">Hotel Manager Requests</a>
+                        </div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
+                            </div>
+                            <!-- <div class="col">
+                                <div class="progress progress-sm mr-2">
+                                    <div class="progress-bar bg-info" role="progressbar"
+                                        style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                        aria-valuemax="100"></div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" style="font-size: 15px;">
+                            <a href="{% url 'addnews' %}" style="color: blue;font-size: 15px;font-weight: 700;text-decoration: none;">Add News</a></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" style="font-size: 15px;">
+                            <a href="{% url 'servicerequest' %}" style="color: green;font-size: 15px;font-weight: 700;text-decoration: none;">Service Requests</a></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" style="font-size: 15px;">
+                            <a href="{% url 'addschemes' %}" style="color: orangered;font-size: 15px;font-weight: 700;text-decoration: none;">Add Schemes</a></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" style="font-size: 15px;">
+                            <a href="{% url 'hotelrequest' %}" style="color: blue;font-size: 15px;font-weight: 700;text-decoration: none;">Hotels Requests</a></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Content Row -->
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold" style="color: orangered;">Total Registered Users</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Role</th>
+                            <!-- <th>Active</th> -->
+                            <th>Verified</th>
+                            <th>Created</th>
+                            <th>Updated</th>
+                            <!-- <th>Status</th> -->
+                        </tr>
+                    </thead>
+                    <!-- <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Salary</th>
+                        </tr>
+                    </tfoot> -->
+                    <tbody>
+                    {% for user in ulist %}
+                        <tr>
+                            <td>{{user.id}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.password}}</td>
+                            <td>{{user.role}}</td>
+                            <!-- <td>{{user.is_active}}</td> -->
+                            <td>{{user.is_verified}}</td>
+                            <td>{{user.is_created}}</td>
+                            <td>{{user.is_updated}}</td>
+                            <!-- <td>{{user.approval}}</td> -->
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

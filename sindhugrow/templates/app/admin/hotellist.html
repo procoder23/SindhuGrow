@@ -1,0 +1,46 @@
+{% extends 'app/admin/base1.html' %}
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Hotel Request</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Hotel Name</th>
+                            <th>Contact</th>
+                            <th>Requirement</th>
+                            <th>Date</th>
+                            <th>Photo</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in hotellist %}
+                        <tr>
+                            <th>{{ user.id }}</th>
+                            <th>{{ user.firstname }}</th>
+                            <th>{{ user.lastname }}</th>
+                            <th>{{ user.hotelname }}</th>
+                            <th>{{ user.contact }}</th>
+                            <th>{{ user.requirement }}</th>
+                            <th>{{ user.date }}</th>
+                            <th>{{ user.photo }}</th>
+                            <td><form action="{% url 'delete_hotel' pk=user.id %}" method="POST" >{% csrf_token %}<input type="submit" value="Delete" style="background-color: red;color: white;"></form></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
